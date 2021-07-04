@@ -30,15 +30,7 @@ class CarsRepository @Inject()(
      collection.flatMap(_.find(BSONDocument("_id" -> id), Option.empty[Cars]).one[Cars])
     }
 
-     def findByPrice(price: Int): Future[Seq[Cars]] = {
-     collection.flatMap(
-         _.find(BSONDocument("price" -> price), Option.empty[Cars])
-         .cursor[Cars](ReadPreference.Primary)
-         .collect[Seq](price, Cursor.FailOnError[Seq[Cars]]())
-         )
-    }
-
-
+   
     def create(cars: Cars): Future[WriteResult] = {
     collection.flatMap(_.insert(ordered = false)
     .one(cars.copy()))
