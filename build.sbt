@@ -22,4 +22,4 @@ libraryDependencies ++= Seq(
 //TwirlKeys.templateImports += "com.duje.controllers._"
 
 // Adds additional packages into conf/routes
- play.sbt.routes.RoutesKeys.routesImport += "com.duje.binders._"
+//play.sbt.routes.RoutesKeys.routesImport += "com.duje.binders._"

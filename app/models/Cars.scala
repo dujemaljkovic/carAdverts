@@ -8,28 +8,40 @@ import reactivemongo.bson._
 
 
 case class Cars(
-                  _id:Option[BSONObjectID]
+                  _id:Option[BSONObjectID],
                   title:String,
-                  description:String
+                  fuelType:String,
+                  price:Int,
+                  isNew:Boolean,
+                  mileage:Int,
+                  firstRegistration:String
                 )
 object Cars{
   implicit val fmt : Format[Cars] = Json.format[Cars]
-  implicit object MovieBSONReader extends BSONDocumentReader[Cars] {
+  implicit object CarsBSONReader extends BSONDocumentReader[Cars] {
     def read(doc: BSONDocument): Cars = {
       Cars(
         doc.getAs[BSONObjectID]("_id"),
         doc.getAs[String]("title").get,
-        doc.getAs[String]("description").get)
+        doc.getAs[String]("fuelType").get,
+        doc.getAs[Int]("price").get,
+        doc.getAs[Boolean]("isNew").get,
+        doc.getAs[Int]("mileage").get,
+        doc.getAs[String]("firstRegistration").get
+        )
     }
   }
 
-  implicit object MovieBSONWriter extends BSONDocumentWriter[Cars] {
+  implicit object CarsBSONWriter extends BSONDocumentWriter[Cars] {
     def write(cars: Cars): BSONDocument = {
       BSONDocument(
         "_id" -> cars._id,
         "title" -> cars.title,
-        "description" -> cars.description
-
+        "fuelType" -> cars.fuelType,
+        "price" -> cars.price,
+        "isNew" -> cars.isNew,
+        "mileage" -> cars.mileage,
+        "firstRegistration" -> cars.firstRegistration
       )
     }
   }
