@@ -41,14 +41,6 @@ class HomeController @Inject()(
   }
 }
 
-  def findByPrice(price: Int):Action[AnyContent] = Action.async { implicit request: Request[AnyContent] =>
-  carsRepository.findByPrice(price).map {
-    caradverts => Ok(Json.toJson(caradverts))
-  }
-  
- }
-
-
 def create():Action[JsValue] = Action.async(controllerComponents.parsers.json) { implicit request => {
 
    request.body.validate[Cars].fold(
