@@ -4,11 +4,11 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index()
-GET     /list                       controllers.HomeController.findAll()
-GET     /list/:id                   controllers.HomeController.findOne(id: String)
-POST    /list                       controllers.HomeController.create()
-PUT     /list/:id                   controllers.HomeController.updateOne(id: String)
-DELETE  /list/:id                   controllers.HomeController.delete(id: String)
+GET     /                                  controllers.HomeController.index()
+GET     /car/adverts                       controllers.HomeController.findAll()
+GET     /car/adverts/:id                   controllers.HomeController.findOne(id: String)
+POST    /car/adverts                       controllers.HomeController.create()
+PUT     /car/adverts/:id                   controllers.HomeController.updateOne(id: String)
+DELETE  /car/adverts/:id                   controllers.HomeController.delete(id: String)
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
